@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grimório de Rituais</title>
+    <title>Grimório Insano</title>
     
-    <!-- Tailwind CSS para estilização rápida e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts para uma tipografia mais elegante -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Ícones (Lucide) -->
     <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
     <script>
       tailwind.config = {
@@ -24,12 +19,12 @@
               serif: ['Cinzel', 'serif'],
             },
             colors: {
-              'brand-sangue': '#8B0000',
-              'brand-morte': '#4B0082',
-              'brand-conhecimento': '#00008B',
-              'brand-energia': '#FFD700',
-              'brand-medo': '#2F4F4F',
-              'brand-varia': '#696969',
+              'brand-sangue': '#bd0000ff',
+              'brand-morte': '#bbbdb2ff',
+              'brand-conhecimento': '#f5e617ff',
+              'brand-energia': '#8218faff',
+              'brand-medo': '#ffffffff',
+              'brand-varia': '#9b9b9bff',
             }
           }
         }
@@ -68,12 +63,14 @@
         <!-- Cabeçalho -->
         <header class="text-center mb-8">
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-100 tracking-wider">Grimório de Rituais</h1>
-            <p class="text-gray-400 mt-2">Um compêndio interativo de conhecimento paranormal.</p>
+            <p class="text-gray-400 mt-2">Grimório Macabro de Rituais DE VERDADE!!!</p>
+            <p class="text-gray-400 mt-2">(Não é de Ordem Paranormal!!!)</p>
+            <p class="text-gray-600 mt-2">by @saaclevi</p>
         </header>
 
         <!-- Controles -->
         <div class="sticky top-0 z-10 bg-gray-900 bg-opacity-80 backdrop-blur-sm py-4 mb-6">
-            <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+            <div class="flex flex-col sm:flex-row gap-4 items-center sm:justify-center sm:items-start justify-between">
                 <!-- Ordenação -->
                 <div class="relative w-full sm:w-auto">
                     <select id="sort-order" class="w-full sm:w-56 appearance-none bg-gray-800 border border-gray-700 text-white py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500 transition">
@@ -92,11 +89,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
                         Filtros
                     </button>
+                </div>
+                <div class="flex gap-4 w-full sm:w-auto">
                     <button id="learned-toggle" class="flex-1 sm:flex-none w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
                         Aprendidos
                     </button>
                 </div>
+                
             </div>
         </div>
 
@@ -179,11 +179,11 @@
             };
             const elementTextColors = {
                 'SANGUE': 'text-red-400',
-                'MORTE': 'text-purple-400',
-                'CONHECIMENTO': 'text-blue-400',
-                'ENERGIA': 'text-yellow-400',
-                'MEDO': 'text-teal-400',
-                'VARIA': 'text-gray-400',
+                'MORTE': 'text-stone-300',
+                'CONHECIMENTO': 'text-yellow-400',
+                'ENERGIA': 'text-purple-400',
+                'MEDO': 'text-gray-300',
+                'VARIA': 'text-zinc-400',
             };
 
             // --- CARREGAMENTO E INICIALIZAÇÃO ---
@@ -297,7 +297,7 @@
                 const elementTextClass = elementTextColors[ritual.elemento.toUpperCase()] || 'text-gray-400';
 
                 const card = document.createElement('div');
-                card.className = `ritual-card-enter bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 ${elementClass} transition-all duration-300 hover:shadow-purple-900/40 hover:scale-[1.02]`;
+                card.className = `ritual-card-enter bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 ${elementClass} transition-all duration-200 hover:shadow-stone-200/10 hover:scale-[1.02]`;
 
                 // Construção do HTML interno do card
                 let detailsHTML = '';
