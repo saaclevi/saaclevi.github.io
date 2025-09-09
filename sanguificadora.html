@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanguificadora</title>
+    <!-- Google Fonts: Pirata One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Pirata+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        #author {
+            margin-top: 15px;
+            margin-bottom: -10px;
+            font-size: 20px;
+            color: #ffffffff;
+            font-family: "Pirata One", cursive;
+        }
+        a {
+            color: #ffc2c2ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            transition: color 0.2s;
+            color: rgba(0, 0, 0, 1);
+        }
+
+        .container {
+            background-color: #850000ff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        .container label {
+            font-family: "Epunda Slab", serif;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: -5px;
+            font-family: "Pirata One", cursive;
+            color: #ffffffff;
+
+
+        }
+        #upload-area {
+            font-family: "Epunda Slab", serif;
+            border: 2px dashed #ffffffff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #upload-area:hover {
+            background-color: #6d3434ff;
+        }
+        #upload-area p {
+            margin: 0;
+            font-size: 16px;
+            color: #ffffffff;
+        }
+        #image-canvas {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border: 1px solid #000000ff;
+            display: none; /* Escondido até uma imagem ser carregada */
+        }
+        .controls, .actions {
+            margin-top: 20px;
+        }
+        button, label {
+            background-color: #000000ff;
+            color: #ffffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.2s;
+            font-size: 14px;
+        }
+        button:hover, label:hover {
+            background-color: #dceafc;
+            color: #000000ff;
+        }
+        #save-btn {
+            font-family: "Epunda Slab", serif;
+            background-color: #ffffffff;
+            color: black;
+        }
+        #save-btn:hover {
+            background-color: #ffffffff;
+        }
+        #save-btn:disabled {
+            background-color: #ffffffff;
+            cursor: not-allowed;
+        }
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sanguificadora</h1>
+        <!-- Botão para carregar a imagem principal -->
+        <input type="file" id="file-input" accept="image/*">
+        <label for="file-input" id="upload-label">Carregar Imagem</label>
+
+        <!-- Área de upload por colagem -->
+        <div id="upload-area">
+            <p>... ou cole uma imagem aqui (Ctrl+V)</p>
+        </div>
+        
+        <canvas id="image-canvas"></canvas>
+
+        <div class="controls" id="filter-controls" style="display: none;">
+            <!-- Botão para aplicar o filtro de sanguificação -->
+            <!-- Novo botão para adicionar a imagem de sangue -->
+            <button onclick="addSangueOverlay()">Sanguifique-a</button>
+            <button onclick="applySanguificacaoFilter()">Torne-a Vermelha</button>
+            <button onclick="resetImage()">Resetar</button>
+        </div>
+
+        <div class="actions">
+            <button id="save-btn" disabled>Salvar Imagem</button>
+        </div>
+        <p id="author">By <a href="https://twitter.com/saaclevi" target="_blank" rel="noopener noreferrer">Saaclevi</a></p>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const uploadArea = document.getElementById('upload-area');
+        const canvas = document.getElementById('image-canvas');
+        const ctx = canvas.getContext('2d');
+        const saveBtn = document.getElementById('save-btn');
+        const filterControls = document.getElementById('filter-controls');
+
+        let originalImage = null; 
+        let currentImage = null; 
+        
+        // A URL da imagem de sangue (agora um arquivo local)
+        const sangueImageURL = 'sangue.png';
+
+        // Função para carregar uma imagem principal
+        function loadImage(src) {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+
+            img.onload = () => {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                originalImage = img;
+                currentImage = img;
+                
+                canvas.style.display = 'block';
+                filterControls.style.display = 'block';
+                saveBtn.disabled = false;
+            };
+            img.src = src;
+        }
+
+        // Evento para o botão de carregar arquivo
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    loadImage(event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Evento para colar da área de transferência
+        window.addEventListener('paste', (e) => {
+            const items = e.clipboardData.items;
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].type.indexOf('image') !== -1) {
+                    const blob = items[i].getAsFile();
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        loadImage(event.target.result);
+                    };
+                    reader.readAsDataURL(blob);
+                }
+            }
+        });
+        
+        // Atualiza a 'currentImage' a partir do conteúdo do canvas
+        function updateCurrentImageFromCanvas() {
+            const dataUrl = canvas.toDataURL('image/png');
+            currentImage = new Image();
+            currentImage.src = dataUrl;
+        }
+
+        // Função para aplicar o filtro de sanguificação (gradiente vermelho)
+        function applySanguificacaoFilter() {
+            if (!currentImage) return;
+
+            // Desenha a imagem atual no canvas para pegar os dados de pixel
+            ctx.drawImage(currentImage, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data; // Array de pixels [R, G, B, A, R, G, B, A, ...]
+
+            for (let i = 0; i < data.length; i += 4) {
+                data[i + 1] = 0; // Canal verde
+                data[i + 2] = 0; // Canal azul
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            updateCurrentImageFromCanvas();
+        }
+        
+        // Função para adicionar a imagem de sangue como sobreposição
+        function addSangueOverlay() {
+            if (!currentImage) return;
+
+            const sangueImg = new Image();
+            sangueImg.crossOrigin = 'anonymous';
+            
+            sangueImg.onload = () => {
+                const newWidth = canvas.width * 0.3;
+                const newHeight = (sangueImg.height / sangueImg.width) * newWidth;
+                const x = (canvas.width - newWidth) / 2;
+                const y = (canvas.height - newHeight) / 2;
+                
+                // Salva o estado atual do canvas
+                ctx.save();
+                ctx.globalCompositeOperation = 'exclusion';
+                
+                // Desenha a imagem de sangue por cima
+                ctx.drawImage(sangueImg, x, y, newWidth, newHeight);
+                
+                // Restaura o estado original do canvas
+                ctx.restore();
+                
+                updateCurrentImageFromCanvas();
+            };
+            sangueImg.src = sangueImageURL;
+        }
+
+        // Função para resetar a imagem para a original
+        function resetImage() {
+            if (!originalImage) return;
+            ctx.drawImage(originalImage, 0, 0);
+            currentImage = originalImage;
+        }
+
+        // Evento para salvar a imagem
+        saveBtn.addEventListener('click', () => {
+            if (!currentImage) return;
+            const link = document.createElement('a');
+            link.download = `voce-foi-sanguificado.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+    </script>
+    
+</body>
+</html>
