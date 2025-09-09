@@ -79,6 +79,9 @@
             max-width: 100%;
             height: auto;
             margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
             border: 1px solid #000000ff;
             display: none; /* Escondido até uma imagem ser carregada */
         }
@@ -248,7 +251,7 @@
                 
                 // Salva o estado atual do canvas
                 ctx.save();
-                ctx.globalCompositeOperation = 'exclusion';
+                ctx.globalCompositeOperation = 'multiply';
                 
                 // Desenha a imagem de sangue por cima
                 ctx.drawImage(sangueImg, x, y, newWidth, newHeight);
