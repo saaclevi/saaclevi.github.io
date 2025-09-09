@@ -20,6 +20,11 @@
             box-sizing: border-box;
             text-decoration: none;
         }
+        #info-text {
+            font-family: "Epunda Slab", serif;
+            font-size: 14px;
+            color: #ffffffff;
+        }
         #author {
             margin-top: 15px;
             margin-bottom: -10px;
@@ -139,11 +144,13 @@
         <div class="controls" id="filter-controls" style="display: none;">
             <!-- Botão para aplicar o filtro de sanguificação -->
             <!-- Novo botão para adicionar a imagem de sangue -->
-            <button onclick="addSangueOverlay()">Sanguifique-a</button>
+            <button onclick="addSangueOverlay(0)">Sanguifique-a 1</button>
+            <button onclick="addSangueOverlay(1)">Sanguifique-a 2</button>
             <button onclick="applySanguificacaoFilter()">Torne-a Vermelha</button>
             <button onclick="resetImage()">Resetar</button>
+            
         </div>
-
+        <p id="info-text">Você pode sanguificar as imagens mais de uma vez, para reforçar seus sigilos.</p>
         <div class="actions">
             <button id="save-btn" disabled>Salvar Imagem</button>
         </div>
@@ -237,32 +244,36 @@
         }
         
         // Função para adicionar a imagem de sangue como sobreposição
-        function addSangueOverlay() {
+        function addSangueOverlay(compositeType) {
             if (!currentImage) return;
 
             const sangueImg = new Image();
             sangueImg.crossOrigin = 'anonymous';
-            
+
             sangueImg.onload = () => {
-                const newWidth = canvas.width * 0.3;
-                const newHeight = (sangueImg.height / sangueImg.width) * newWidth;
-                const x = (canvas.width - newWidth) / 2;
-                const y = (canvas.height - newHeight) / 2;
-                
-                // Salva o estado atual do canvas
-                ctx.save();
+            const newWidth = canvas.width * 0.6;
+            const newHeight = (sangueImg.height / sangueImg.width) * newWidth;
+            const x = (canvas.width - newWidth) / 2;
+            const y = (canvas.height - newHeight) / 2;
+
+            ctx.save();
+            if (compositeType === 1) {
                 ctx.globalCompositeOperation = 'multiply';
-                
-                // Desenha a imagem de sangue por cima
-                ctx.drawImage(sangueImg, x, y, newWidth, newHeight);
-                
-                // Restaura o estado original do canvas
-                ctx.restore();
-                
-                updateCurrentImageFromCanvas();
+            } else if (compositeType === 0) {
+                ctx.globalCompositeOperation = 'exclusion';
+            } else {
+                ctx.globalCompositeOperation = 'source-over';
+            }
+
+            ctx.drawImage(sangueImg, x, y, newWidth, newHeight);
+
+            ctx.restore();
+
+            updateCurrentImageFromCanvas();
             };
             sangueImg.src = sangueImageURL;
         }
+        
 
         // Função para resetar a imagem para a original
         function resetImage() {
