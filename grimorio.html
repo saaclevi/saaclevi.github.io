@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grimório Insano</title>
-    
+    <title>Grimorium Macabre</title>
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +21,10 @@
             },
             colors: {
               'brand-sangue': '#bd0000ff',
-              'brand-morte': '#bbbdb2ff',
+              'brand-morte': '#a8a797ff',
               'brand-conhecimento': '#f5e617ff',
               'brand-energia': '#8218faff',
-              'brand-medo': '#ffffffff',a
+              'brand-medo': '#ffffffff',
               'brand-varia': '#9b9b9bff',
             }
           }
@@ -36,7 +37,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #1a202c;
+            background: #15161a;
         }
         ::-webkit-scrollbar-thumb {
             background: #4a5568;
@@ -45,6 +46,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #718096;
         }
+        /* Classes para animação de entrada dos cards */
         .ritual-card-enter {
             opacity: 0;
             transform: translateY(20px);
@@ -54,51 +56,54 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .form-input, .form-select, .form-textarea {
+            @apply w-full bg-zinc-700 text-white rounded-lg p-2 border border-zinc-600 focus:outline-none focus:border-purple-500 transition;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans antialiased">
+<body class="bg-zinc-950 text-zinc-200 font-sans antialiased">
 
     <div id="app" class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
 
         <!-- Cabeçalho -->
         <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-100 tracking-wider">Grimório de Rituais</h1>
-            <p class="text-gray-400 mt-2">Grimório Macabro de Rituais DE VERDADE!!!</p>
-            <p class="text-gray-400 mt-2">(Não é de Ordem Paranormal!!!)</p>
-            <p class="text-gray-600 mt-2">
-                by <a href="https://twitter.com/saaclevi" target="_blank" rel="noopener noreferrer" class="underline hover:text-purple-400">@saaclevi</a>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-zinc-100 tracking-wider">Grimorium Macabre</h1>
+            <p class="text-zinc-400 mt-2">Grimório de Rituais de Ordem Paranormal.</p>
+            <p class="text-zinc-600 mt-2">
+                by <a href="https://twitter.com/saaclevi" target="_blank" rel="noopener noreferrer" class="underline hover:text-zinc-300">@saaclevi</a>
             </p>
         </header>
 
         <!-- Controles -->
-        <div class="sticky top-0 z-10 bg-gray-900 bg-opacity-80 backdrop-blur-sm py-4 mb-6">
-            <div class="flex flex-col sm:flex-row gap-4 items-center sm:justify-center sm:items-start justify-between">
+        <div class="sticky rounded-lg top-0 z-10 bg-zinc-900 bg-opacity-80 backdrop-blur-sm py-4 mb-6">
+            <div class="flex flex-wrap gap-4 items-center justify-center">
                 <!-- Ordenação -->
                 <div class="relative w-full sm:w-auto">
-                    <select id="sort-order" class="w-full sm:w-56 appearance-none bg-gray-800 border border-gray-700 text-white py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-gray-700 focus:border-purple-500 transition">
+                    <select id="sort-order" class="w-full sm:w-56 appearance-none bg-zinc-800 border border-zinc-700 text-white py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-zinc-700 focus:border-zinc-500 transition">
                         <option value="alphabetical">Ordem: Alfabética</option>
                         <option value="level">Ordem: Círculo</option>
                         <option value="element">Ordem: Elemento</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-zinc-400">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
                 </div>
 
-                <!-- Botões de Filtro -->
-                <div class="flex gap-4 w-full sm:w-auto">
-                    <button id="filter-button" class="flex-1 sm:flex-none w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
+                <!-- Botões de Ação -->
+                <div class="flex gap-4 w-full sm:w-auto justify-center">
+                    <button id="filter-button" class="flex-1 sm:flex-none bg-stone-600 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
                         Filtros
                     </button>
-                </div>
-                <div class="flex gap-4 w-full sm:w-auto">
-                    <button id="learned-toggle" class="flex-1 sm:flex-none w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
+                    <button id="learned-toggle" class="flex-1 sm:flex-none bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
                         Aprendidos
                     </button>
+                    <button id="create-ritual-button" class="flex-1 sm:flex-none bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                        Criar Ritual
+                    </button>
                 </div>
-                
             </div>
         </div>
 
@@ -108,44 +113,153 @@
         </div>
         
         <div id="loading" class="text-center py-10">
-            <p class="text-xl text-gray-400">Carregando rituais...</p>
+            <p class="text-xl text-zinc-400">Carregando rituais...</p>
         </div>
 
     </div>
 
     <!-- Modal de Filtros -->
     <div id="filter-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 w-11/12 max-w-2xl max-h-[80vh] overflow-y-auto">
+        <div class="bg-zinc-800 rounded-lg shadow-xl p-6 w-11/12 max-w-2xl max-h-[80vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-bold text-white">Filtros</h2>
-                <button id="close-modal-button" class="text-gray-400 hover:text-white">&times;</button>
+                <button id="close-modal-button" class="text-zinc-400 hover:text-white text-3xl leading-none">&times;</button>
             </div>
-            <div id="filter-options" class="space-y-6">
-                <!-- Opções de filtro serão injetadas aqui -->
-            </div>
+            <div id="filter-options" class="space-y-6"></div>
             <div class="mt-6 flex gap-4">
-                <button id="apply-filters" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition">Aplicar</button>
-                <button id="clear-filters" class="w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg transition">Limpar Filtros</button>
+                <button id="apply-filters" class="w-full bg-zinc-600 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded-lg transition">Aplicar</button>
+                <button id="clear-filters" class="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded-lg transition">Limpar Filtros</button>
             </div>
         </div>
     </div>
     
     <!-- Modal de Categoria -->
     <div id="category-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 w-11/12 max-w-md">
-            <h2 class="text-xl font-bold text-white mb-4">Editar Categoria</h2>
-            <input type="text" id="category-input" class="w-full bg-gray-700 text-white rounded-lg p-2 border border-gray-600 focus:outline-none focus:border-purple-500" placeholder="Ex: Combate, Suporte, Utilidade...">
+        <div class="bg-zinc-800 rounded-lg shadow-xl p-6 w-11/12 max-w-md">
+            <h2 class="text-xl font-bold text-white mb-4">Editar Tag</h2>
+            <input type="text" id="category-input" class="form-input" placeholder="Ex: Combate, Suporte, Utilidade...">
             <div class="mt-4 flex gap-4">
                 <button id="save-category" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition">Salvar</button>
-                <button id="cancel-category" class="w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg transition">Cancelar</button>
+                <button id="cancel-category" class="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded-lg transition">Cancelar</button>
             </div>
         </div>
     </div>
+    
+    <!-- Modal de Criar Ritual -->
+    <div id="create-ritual-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-zinc-800 rounded-lg shadow-xl p-6 w-11/12 max-w-3xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-white">Criar Novo Ritual</h2>
+                <button id="close-create-modal-button" class="text-zinc-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <form id="create-ritual-form" class="space-y-4">
+                <!-- Linha 1: Nome e Fonte -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="md:col-span-2">
+                        <label for="ritual-nome" class="block text-sm font-medium text-zinc-300 mb-1">Nome do Ritual</label>
+                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="form-input" required>
+                    </div>
+                    <div>
+                        <label for="ritual-fonte" class="block text-sm font-medium text-zinc-300 mb-1">Fonte</label>
+                        <input type="text" id="ritual-fonte" name="fonte" class="form-input" value="Custom" placeholder="Custom">
+                    </div>
+                </div>
+                
+                <!-- Linha 2: Elemento, Nivel, Execução, Alcance -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div>
+                        <label for="ritual-elemento" class="block text-sm font-medium text-zinc-300 mb-1">Elemento</label>
+                        <select id="ritual-elemento" name="elemento" class="form-select" required>
+                            <option value="Conhecimento">Conhecimento</option>
+                            <option value="Sangue">Sangue</option>
+                            <option value="Morte">Morte</option>
+                            <option value="Energia">Energia</option>
+                            <option value="Medo">Medo</option>
+                            <option value="Varia">Varia</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="ritual-nivel" class="block text-sm font-medium text-zinc-300 mb-1">Nível</label>
+                        <select id="ritual-nivel" name="nivel" class="form-select" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="ritual-execucao" class="block text-sm font-medium text-zinc-300 mb-1">Execução</label>
+                        <select id="ritual-execucao" name="execução" class="form-select" required>
+                            <option value="Padrão">Padrão</option>
+                            <option value="Movimento">Movimento</option>
+                            <option value="Completa">Completa</option>
+                            <option value="Reação">Reação</option>
+                            <option value="Livre">Livre</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="ritual-alcance" class="block text-sm font-medium text-zinc-300 mb-1">Alcance</label>
+                        <select id="ritual-alcance" name="alcance" class="form-select" required>
+                            <option value="Pessoal">Pessoal</option>
+                            <option value="Toque">Toque</option>
+                            <option value="Curto">Curto</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Longo">Longo</option>
+                            <option value="Extremo">Extremo</option>
+                            <option value="Ilimitado">Ilimitado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Linha 3: Alvo, Duração, Resistência -->
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="ritual-alvo" class="block text-sm font-medium text-zinc-300 mb-1">Alvo</label>
+                        <input type="text" id="ritual-alvo" name="alvo" class="form-input">
+                    </div>
+                    <div>
+                        <label for="ritual-duracao" class="block text-sm font-medium text-zinc-300 mb-1">Duração</label>
+                        <input type="text" id="ritual-duracao" name="duração" class="form-input">
+                    </div>
+                    <div>
+                        <label for="ritual-resistencia" class="block text-sm font-medium text-zinc-300 mb-1">Resistência</label>
+                        <input type="text" id="ritual-resistencia" name="resistência" class="form-input">
+                    </div>
+                </div>
+
+                <!-- Descrição -->
+                <div>
+                    <label for="ritual-descricao" class="block text-sm font-medium text-zinc-300 mb-1">Descrição</label>
+                    <textarea id="ritual-descricao" name="descricao" rows="4" class="form-textarea" required></textarea>
+                </div>
+                
+                <!-- Modificações -->
+                <div>
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Modificações</h3>
+                    <div id="modifications-container" class="space-y-3">
+                        <!-- Inputs de modificação serão adicionados aqui -->
+                    </div>
+                    <button type="button" id="add-modification-button" class="mt-2 text-sm bg-zinc-600 hover:bg-zinc-500 text-white font-semibold py-1 px-3 rounded-lg transition">
+                        + Adicionar Modificação
+                    </button>
+                </div>
+                
+                <!-- Botões de Ação -->
+                <div class="mt-6 flex gap-4 pt-4 border-t border-zinc-700">
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition">Salvar Ritual</button>
+                    <button type="button" id="cancel-create-ritual-button" class="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded-lg transition">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- VARIÁVEIS GLOBAIS E ESTADO DA APLICAÇÃO ---
-            let allRituals = [];
+            
+            let ritualsFromJson = [];
+            let customRituals = [];
+            let allRituals = []; 
             let learnedRituals = new Set();
             let customCategories = {};
             
@@ -159,45 +273,44 @@
             const sortOrderSelect = document.getElementById('sort-order');
             const filterButton = document.getElementById('filter-button');
             const learnedToggle = document.getElementById('learned-toggle');
+            const createRitualButton = document.getElementById('create-ritual-button');
+            
+            // Modal de Filtros
             const filterModal = document.getElementById('filter-modal');
             const closeModalButton = document.getElementById('close-modal-button');
             const applyFiltersButton = document.getElementById('apply-filters');
             const clearFiltersButton = document.getElementById('clear-filters');
+            
+            // Modal de Categoria
             const categoryModal = document.getElementById('category-modal');
             const categoryInput = document.getElementById('category-input');
             const saveCategoryButton = document.getElementById('save-category');
             const cancelCategoryButton = document.getElementById('cancel-category');
             
+            // Modal de Criar Ritual
+            const createRitualModal = document.getElementById('create-ritual-modal');
+            const createRitualForm = document.getElementById('create-ritual-form');
+            const closeCreateModalButton = document.getElementById('close-create-modal-button');
+            const cancelCreateRitualButton = document.getElementById('cancel-create-ritual-button');
+            const addModificationButton = document.getElementById('add-modification-button');
+            const modificationsContainer = document.getElementById('modifications-container');
+            
             let currentRitualForCategory = null;
 
-            // --- CORES DOS ELEMENTOS ---
             const elementColors = {
-                'SANGUE': 'border-brand-sangue',
-                'MORTE': 'border-brand-morte',
-                'CONHECIMENTO': 'border-brand-conhecimento',
-                'ENERGIA': 'border-brand-energia',
-                'MEDO': 'border-brand-medo',
-                'VARIA': 'border-brand-varia',
+                'SANGUE': 'border-brand-sangue', 'MORTE': 'border-brand-morte', 'CONHECIMENTO': 'border-brand-conhecimento',
+                'ENERGIA': 'border-brand-energia', 'MEDO': 'border-brand-medo', 'VARIA': 'border-brand-varia',
             };
             const elementTextColors = {
-                'SANGUE': 'text-red-400',
-                'MORTE': 'text-stone-300',
-                'CONHECIMENTO': 'text-yellow-400',
-                'ENERGIA': 'text-purple-400',
-                'MEDO': 'text-gray-300',
-                'VARIA': 'text-zinc-400',
+                'SANGUE': 'text-red-400', 'MORTE': 'text-stone-400', 'CONHECIMENTO': 'text-yellow-400',
+                'ENERGIA': 'text-purple-400', 'MEDO': 'text-zinc-50', 'VARIA': 'text-zinc-400',
             };
 
-            // --- CARREGAMENTO E INICIALIZAÇÃO ---
-            
-            // Função para carregar os dados do JSON
             async function loadRituals() {
                 try {
                     const response = await fetch('rituais.json');
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    allRituals = await response.json();
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    ritualsFromJson = await response.json();
                     initialize();
                 } catch (error) {
                     console.error("Não foi possível carregar o arquivo rituais.json:", error);
@@ -206,26 +319,25 @@
                 }
             }
             
-            // Função principal de inicialização
             function initialize() {
                 loadFromLocalStorage();
+                allRituals = [...ritualsFromJson, ...customRituals];
                 setupEventListeners();
                 populateFilterOptions();
                 renderRituals();
                 loadingIndicator.style.display = 'none';
             }
 
-            // --- PERSISTÊNCIA DE DADOS (LocalStorage) ---
-
+            // --- PERSISTÊNCIA DE DADOS ---
             function loadFromLocalStorage() {
                 const learnedData = localStorage.getItem('learnedRituals');
-                if (learnedData) {
-                    learnedRituals = new Set(JSON.parse(learnedData));
-                }
+                if (learnedData) learnedRituals = new Set(JSON.parse(learnedData));
+
                 const categoryData = localStorage.getItem('customCategories');
-                if (categoryData) {
-                    customCategories = JSON.parse(categoryData);
-                }
+                if (categoryData) customCategories = JSON.parse(categoryData);
+
+                const customRitualsData = localStorage.getItem('customRituals');
+                if (customRitualsData) customRituals = JSON.parse(customRitualsData);
             }
 
             function saveLearned() {
@@ -236,24 +348,24 @@
                 localStorage.setItem('customCategories', JSON.stringify(customCategories));
             }
 
-            // --- LÓGICA DE RENDERIZAÇÃO ---
+            function saveCustomRituals() {
+                localStorage.setItem('customRituals', JSON.stringify(customRituals));
+            }
 
+            // --- LÓGICA DE RENDERIZAÇÃO ---
             function renderRituals() {
-                ritualList.innerHTML = ''; // Limpa a lista
+                ritualList.innerHTML = '';
                 
-                // 1. Filtragem
                 let filteredRituals = allRituals.filter(ritual => {
                     if (showOnlyLearned && !learnedRituals.has(ritual.nome_do_ritual)) {
                         return false;
                     }
-
                     for (const key in activeFilters) {
                         if (activeFilters[key].length > 0) {
                             const ritualValue = key === 'categoria' 
                                 ? customCategories[ritual.nome_do_ritual] || 'Sem Categoria'
                                 : ritual[key];
-                            
-                            if (!ritualValue || !activeFilters[key].includes(ritualValue)) {
+                            if (!ritualValue || !activeFilters[key].includes(String(ritualValue))) {
                                 return false;
                             }
                         }
@@ -261,7 +373,6 @@
                     return true;
                 });
 
-                // 2. Ordenação
                 const elementOrder = ['MORTE', 'SANGUE', 'CONHECIMENTO', 'ENERGIA', 'MEDO', 'VARIA'];
                 filteredRituals.sort((a, b) => {
                     switch (currentSort) {
@@ -279,14 +390,12 @@
                     }
                 });
                 
-                // 3. Renderização no DOM
                 if (filteredRituals.length === 0) {
-                    ritualList.innerHTML = `<p class="text-gray-400 col-span-full text-center py-10">Nenhum ritual encontrado com os filtros atuais.</p>`;
+                    ritualList.innerHTML = `<p class="text-zinc-400 col-span-full text-center py-10">Nenhum ritual encontrado com os filtros atuais.</p>`;
                 } else {
                     filteredRituals.forEach(ritual => {
                         const card = createRitualCard(ritual);
                         ritualList.appendChild(card);
-                        // Adiciona a classe para a animação de entrada com um pequeno delay
                         setTimeout(() => card.classList.add('ritual-card-enter-active'), 50);
                     });
                 }
@@ -294,38 +403,35 @@
             
             function createRitualCard(ritual) {
                 const isLearned = learnedRituals.has(ritual.nome_do_ritual);
-                const category = customCategories[ritual.nome_do_ritual] || 'Nenhuma';
-                const elementClass = elementColors[ritual.elemento.toUpperCase()] || 'border-gray-600';
-                const elementTextClass = elementTextColors[ritual.elemento.toUpperCase()] || 'text-gray-400';
+                const category = customCategories[ritual.nome_do_ritual] || 'Adicionar Tag';
+                const elementClass = elementColors[ritual.elemento.toUpperCase()] || 'border-zinc-600';
+                const elementTextClass = elementTextColors[ritual.elemento.toUpperCase()] || 'text-zinc-400';
 
                 const card = document.createElement('div');
-                card.className = `ritual-card-enter bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 ${elementClass} transition-all duration-200 hover:shadow-stone-200/10 hover:scale-[1.02]`;
+                card.className = `ritual-card-enter bg-zinc-800 rounded-lg shadow-lg overflow-hidden border-l-4 ${elementClass} transition-all duration-200 hover:shadow-stone-200/10 hover:scale-[1.02]`;
 
-                // Construção do HTML interno do card
                 let detailsHTML = '';
                 const detailOrder = ['execução', 'alcance', 'alvo', 'duração', 'resistência'];
                 detailOrder.forEach(key => {
                     if (ritual[key]) {
-                        detailsHTML += `<p class="text-sm"><strong class="font-semibold text-gray-400 capitalize">${key.replace('_', ' ')}:</strong> ${ritual[key]}</p>`;
+                        detailsHTML += `<p class="text-sm"><strong class="font-semibold text-zinc-400 capitalize">${key.replace('_', ' ')}:</strong> ${ritual[key]}</p>`;
                     }
                 });
 
                 let modificationsHTML = '';
                 if (ritual.modificacoes && ritual.modificacoes.length > 0) {
                     modificationsHTML = `
-                        <div class="mt-4 pt-3 border-t border-gray-700">
-                            <h4 class="font-semibold text-gray-300 mb-2">Modificações:</h4>
+                        <div class="mt-4 pt-3 border-t border-zinc-700">
+                            <h4 class="font-semibold text-zinc-300 mb-2">Modificações:</h4>
                             <ul class="space-y-2 pl-4 list-disc list-inside">
                                 ${ritual.modificacoes.map(mod => `
                                     <li>
                                         <strong class="text-purple-400">${mod.versao} (${mod.custo}):</strong>
-                                        <span class="text-gray-400">${mod.descricao_modificacao}</span>
-                                        ${mod.requisitos ? `<em class="block text-xs text-gray-500">(${mod.requisitos.join(', ')})</em>` : ''}
+                                        <span class="text-zinc-400">${mod.descricao_modificacao}</span>
                                     </li>
                                 `).join('')}
                             </ul>
-                        </div>
-                    `;
+                        </div>`;
                 }
 
                 card.innerHTML = `
@@ -333,70 +439,58 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <h3 class="text-xl font-bold font-serif tracking-wide text-white">${ritual.nome_do_ritual}</h3>
-                                <div class="flex items-center gap-3 text-xs mt-1">
+                                <div class="flex items-center gap-3 text-xs mt-1 flex-wrap">
                                     <span class="${elementTextClass} font-semibold">${ritual.elemento} ${ritual.nivel}</span>
-                                    <span class="text-gray-500">•</span>
-                                    <span class="text-gray-400 italic category-text cursor-pointer hover:text-purple-400" data-ritual-name="${ritual.nome_do_ritual}">${category}</span>
+                                    <span class="text-zinc-500">•</span>
+                                    <span class="text-zinc-400 italic category-text cursor-pointer hover:text-purple-400" data-ritual-name="${ritual.nome_do_ritual}">${category}</span>
+                                    ${ritual.fonte ? `<span class="text-zinc-500">•</span><span class="text-zinc-500">${ritual.fonte}</span>` : ''}
                                 </div>
                             </div>
-                            <button class="learn-button p-2 rounded-full ${isLearned ? 'bg-yellow-500 text-gray-900' : 'bg-gray-700 text-gray-400'} hover:bg-yellow-400 transition" data-ritual-name="${ritual.nome_do_ritual}" title="${isLearned ? 'Esquecer' : 'Aprender'}">
+                            <button class="learn-button p-2 rounded-full ${isLearned ? 'bg-yellow-500 text-zinc-900' : 'bg-zinc-700 text-zinc-400'} hover:bg-yellow-400 transition flex-shrink-0" data-ritual-name="${ritual.nome_do_ritual}" title="${isLearned ? 'Esquecer' : 'Aprender'}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
                             </button>
                         </div>
                     </div>
                     <div class="ritual-details hidden px-4 pb-4">
-                        <p class="text-gray-300 mb-3">${ritual.descricao}</p>
-                        <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-gray-400">
-                            ${detailsHTML}
-                        </div>
+                        <p class="text-zinc-300 mb-3">${ritual.descricao}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-zinc-400">${detailsHTML}</div>
                         ${modificationsHTML}
                     </div>
                 `;
                 
-                // Adiciona eventos ao card criado
                 card.querySelector('.ritual-header').addEventListener('click', (e) => {
-                    // Impede que o clique nos botões propague para o header
                     if (e.target.closest('button') || e.target.closest('.category-text')) return;
                     card.querySelector('.ritual-details').classList.toggle('hidden');
                 });
-
                 card.querySelector('.learn-button').addEventListener('click', handleLearnToggle);
                 card.querySelector('.category-text').addEventListener('click', handleCategoryEdit);
-
                 return card;
             }
 
             // --- LÓGICA DE EVENTOS ---
-            
             function setupEventListeners() {
-                sortOrderSelect.addEventListener('change', (e) => {
-                    currentSort = e.target.value;
-                    renderRituals();
-                });
-
+                sortOrderSelect.addEventListener('change', (e) => { currentSort = e.target.value; renderRituals(); });
                 filterButton.addEventListener('click', () => filterModal.classList.remove('hidden'));
                 closeModalButton.addEventListener('click', () => filterModal.classList.add('hidden'));
                 applyFiltersButton.addEventListener('click', handleApplyFilters);
                 clearFiltersButton.addEventListener('click', handleClearFilters);
-
                 learnedToggle.addEventListener('click', () => {
                     showOnlyLearned = !showOnlyLearned;
                     learnedToggle.classList.toggle('bg-yellow-500', showOnlyLearned);
-                    learnedToggle.classList.toggle('text-gray-900', showOnlyLearned);
-                    learnedToggle.classList.toggle('bg-gray-700', !showOnlyLearned);
+                    learnedToggle.classList.toggle('text-zinc-900', showOnlyLearned);
+                    learnedToggle.classList.toggle('bg-zinc-700', !showOnlyLearned);
                     renderRituals();
                 });
-                
                 saveCategoryButton.addEventListener('click', handleSaveCategory);
                 cancelCategoryButton.addEventListener('click', () => categoryModal.classList.add('hidden'));
-
-                // Fechar modal ao clicar fora
-                filterModal.addEventListener('click', (e) => {
-                    if (e.target === filterModal) filterModal.classList.add('hidden');
-                });
-                categoryModal.addEventListener('click', (e) => {
-                    if (e.target === categoryModal) categoryModal.classList.add('hidden');
-                });
+                createRitualButton.addEventListener('click', () => createRitualModal.classList.remove('hidden'));
+                closeCreateModalButton.addEventListener('click', () => createRitualModal.classList.add('hidden'));
+                cancelCreateRitualButton.addEventListener('click', () => createRitualModal.classList.add('hidden'));
+                addModificationButton.addEventListener('click', addModificationInput);
+                createRitualForm.addEventListener('submit', handleSaveRitual);
+                filterModal.addEventListener('click', (e) => { if (e.target === filterModal) filterModal.classList.add('hidden'); });
+                categoryModal.addEventListener('click', (e) => { if (e.target === categoryModal) categoryModal.classList.add('hidden'); });
+                createRitualModal.addEventListener('click', (e) => { if (e.target === createRitualModal) createRitualModal.classList.add('hidden'); });
             }
 
             function handleLearnToggle(e) {
@@ -408,18 +502,12 @@
                     learnedRituals.add(ritualName);
                 }
                 saveLearned();
-                
-                // Atualiza o botão visualmente sem re-renderizar tudo
                 const isLearned = learnedRituals.has(ritualName);
                 button.classList.toggle('bg-yellow-500', isLearned);
-                button.classList.toggle('text-gray-900', isLearned);
-                button.classList.toggle('bg-gray-700', !isLearned);
-                button.classList.toggle('text-gray-400', !isLearned);
-
-                // Se o filtro "Aprendidos" estiver ativo, re-renderiza a lista
-                if (showOnlyLearned) {
-                    renderRituals();
-                }
+                button.classList.toggle('text-zinc-900', isLearned);
+                button.classList.toggle('bg-zinc-700', !isLearned);
+                button.title = isLearned ? 'Esquecer' : 'Aprender';
+                if (showOnlyLearned) renderRituals();
             }
             
             function handleCategoryEdit(e) {
@@ -438,20 +526,69 @@
                 }
                 saveCategories();
                 categoryModal.classList.add('hidden');
-                populateFilterOptions(); // Atualiza as opções de filtro com a nova categoria
+                populateFilterOptions();
                 renderRituals();
+            }
+            
+            function handleSaveRitual(e) {
+                e.preventDefault();
+                const formData = new FormData(createRitualForm);
+                const newRitual = Object.fromEntries(formData.entries());
+
+                const ritualName = newRitual.nome_do_ritual.trim();
+                if (allRituals.some(r => r.nome_do_ritual.toLowerCase() === ritualName.toLowerCase())) {
+                    alert('Erro: Já existe um ritual com este nome.');
+                    return;
+                }
+                
+                newRitual.nivel = parseInt(newRitual.nivel, 10);
+                newRitual.modificacoes = [];
+                const modVersoes = document.querySelectorAll('input[name="mod_versao"]');
+                const modCustos = document.querySelectorAll('input[name="mod_custo"]');
+                const modDescricoes = document.querySelectorAll('textarea[name="mod_descricao"]');
+                modVersoes.forEach((v, index) => {
+                    const versao = v.value.trim();
+                    const custo = modCustos[index].value.trim();
+                    const descricao = modDescricoes[index].value.trim();
+                    if(versao && custo && descricao) {
+                       newRitual.modificacoes.push({
+                           versao: versao,
+                           custo: custo,
+                           descricao_modificacao: descricao
+                       });
+                    }
+                });
+
+                customRituals.push(newRitual);
+                saveCustomRituals();
+                allRituals = [...ritualsFromJson, ...customRituals];
+                
+                populateFilterOptions();
+                renderRituals();
+                
+                createRitualForm.reset();
+                modificationsContainer.innerHTML = '';
+                createRitualModal.classList.add('hidden');
+            }
+
+            function addModificationInput() {
+                const div = document.createElement('div');
+                div.className = 'grid grid-cols-1 md:grid-cols-6 gap-2 border border-zinc-700 p-2 rounded-lg';
+                div.innerHTML = `
+                    <input type="text" name="mod_versao" placeholder="Versão (Ex: Discente)" class="form-input md:col-span-2" required>
+                    <input type="text" name="mod_custo" placeholder="Custo (Ex: +2 PE)" class="form-input md:col-span-1" required>
+                    <textarea name="mod_descricao" placeholder="Descrição da modificação" rows="1" class="form-textarea md:col-span-2" required></textarea>
+                    <button type="button" class="remove-mod-btn bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-lg transition h-10 self-center">Remover</button>
+                `;
+                modificationsContainer.appendChild(div);
+                div.querySelector('.remove-mod-btn').addEventListener('click', () => div.remove());
             }
 
             // --- LÓGICA DE FILTROS ---
-            
             function getUniqueValues(key) {
                 const values = new Set();
-                allRituals.forEach(ritual => {
-                    if (ritual[key]) {
-                        values.add(ritual[key]);
-                    }
-                });
-                return Array.from(values).sort();
+                allRituals.forEach(ritual => { if (ritual[key]) values.add(ritual[key]); });
+                return Array.from(values).sort((a, b) => a - b || String(a).localeCompare(String(b)));
             }
             
             function getUniqueCategories() {
@@ -462,29 +599,29 @@
 
             function populateFilterOptions() {
                 const filterOptionsContainer = document.getElementById('filter-options');
-                
-                const filterGroups = {
-                    'Execução': getUniqueValues('execução'),
-                    'Alcance': getUniqueValues('alcance'),
-                    'Duração': getUniqueValues('duração'),
-                    'Categoria': getUniqueCategories(),
-                };
-                
+                const filterGroups = [
+                    { displayName: 'Execução', dataKey: 'execução', values: getUniqueValues('execução') },
+                    { displayName: 'Elemento', dataKey: 'elemento', values: getUniqueValues('elemento') },
+                    { displayName: 'Fonte', dataKey: 'fonte', values: getUniqueValues('fonte') },
+                    { displayName: 'Nível', dataKey: 'nivel', values: getUniqueValues('nivel') },
+                    { displayName: 'Alcance', dataKey: 'alcance', values: getUniqueValues('alcance') },
+                    { displayName: 'Duração', dataKey: 'duração', values: getUniqueValues('duração') },
+                    { displayName: 'Categoria', dataKey: 'categoria', values: getUniqueCategories() },
+                ];
                 let html = '';
-                for (const groupName in filterGroups) {
-                    const key = groupName.toLowerCase();
-                    html += `<div><h3 class="text-lg font-semibold text-purple-400 mb-2">${groupName}</h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">`;
-                    filterGroups[groupName].forEach(value => {
-                        const isChecked = activeFilters[key] && activeFilters[key].includes(value);
+                filterGroups.forEach(group => {
+                    if (group.values.length === 0) return;
+                    html += `<div><h3 class="text-lg font-semibold text-purple-400 mb-2">${group.displayName}</h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">`;
+                    group.values.forEach(value => {
+                        const isChecked = activeFilters[group.dataKey] && activeFilters[group.dataKey].includes(String(value));
                         html += `
-                            <label class="flex items-center space-x-2 bg-gray-700 p-2 rounded-md hover:bg-gray-600 cursor-pointer">
-                                <input type="checkbox" data-filter-key="${key}" value="${value}" class="form-checkbox h-4 w-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500" ${isChecked ? 'checked' : ''}>
-                                <span class="text-sm text-gray-300">${value}</span>
-                            </label>
-                        `;
+                            <label class="flex items-center space-x-2 bg-zinc-700 p-2 rounded-md hover:bg-zinc-600 cursor-pointer">
+                                <input type="checkbox" data-filter-key="${group.dataKey}" value="${value}" class="form-checkbox h-4 w-4 text-purple-600 bg-zinc-800 border-zinc-600 rounded focus:ring-purple-500" ${isChecked ? 'checked' : ''}>
+                                <span class="text-sm text-zinc-300">${value}</span>
+                            </label>`;
                     });
                     html += `</div></div>`;
-                }
+                });
                 filterOptionsContainer.innerHTML = html;
             }
             
@@ -493,11 +630,8 @@
                 const checkboxes = document.querySelectorAll('#filter-options input[type="checkbox"]:checked');
                 checkboxes.forEach(cb => {
                     const key = cb.dataset.filterKey;
-                    const value = cb.value;
-                    if (!activeFilters[key]) {
-                        activeFilters[key] = [];
-                    }
-                    activeFilters[key].push(value);
+                    if (!activeFilters[key]) activeFilters[key] = [];
+                    activeFilters[key].push(cb.value);
                 });
                 filterModal.classList.add('hidden');
                 renderRituals();
@@ -511,10 +645,13 @@
                 renderRituals();
             }
 
-            // Inicia a aplicação
             loadRituals();
         });
     </script>
-
-</body>
+        
+        <p class="text-zinc-700 mt-2 text-center p-3">Ordem Paranormal e Sobrevivendo ao Horror são produtos da Jambô Editora e seus respectivos criadores, todos os direitos reservados.
+            <br>Este site armazena arquivos em seu navegador, limpar os dados ocorrerá em perda dos seus rituais criados e conhecidos, além de suas tags.
+            <br>Se você encontrar um bug ou erro de digitação, manda uma dm para o @saaclevi no Twitter/X. </p>
+        </body>
 </html>
+
