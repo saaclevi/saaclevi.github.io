@@ -33,6 +33,10 @@
     </script>
     <style>
         /* Estilo para a barra de rolagem */
+        ::selection {
+            background-color: #5f5e54;
+            color: white;
+        }
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -59,6 +63,7 @@
         .form-input, .form-select, .form-textarea {
             @apply w-full bg-zinc-700 text-white rounded-lg p-2 border border-zinc-600 focus:outline-none focus:border-purple-500 transition;
         }
+
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 font-sans antialiased">
@@ -94,7 +99,7 @@
 
                 <!-- Botões de Ação -->
                 <div class="flex gap-4 w-full sm:w-auto justify-center">
-                    <button id="filter-button" class="flex-1 sm:flex-none bg-stone-600 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
+                    <button id="filter-button" class="flex-1 sm:flex-none bg-stone-600 hover:bg-stone-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
                         Filtros
                     </button>
@@ -102,7 +107,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
                         Aprendidos
                     </button>
-                    <button id="create-ritual-button" class="flex-1 sm:flex-none bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
+                    <button id="create-ritual-button" class="flex-1 sm:flex-none bg-stone-600 hover:bg-stone-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
                         Criar Ritual
                     </button>
@@ -159,12 +164,12 @@
                 <!-- Linha 1: Nome e Fonte -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="md:col-span-2">
-                        <label for="ritual-nome" class="block text-sm font-medium text-zinc-300 mb-1">Nome do Ritual</label>
-                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="form-input" required>
+                        <label for="ritual-nome" class="block text-sm font-medium text-zinc-200 mb-2 ">Nome do Ritual</label>
+                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="form-input rounded p-2 bg-zinc-900" required>
                     </div>
                     <div>
                         <label for="ritual-fonte" class="block text-sm font-medium text-zinc-300 mb-1">Fonte</label>
-                        <input type="text" id="ritual-fonte" name="fonte" class="form-input" value="Custom" placeholder="Custom">
+                        <input type="text" id="ritual-fonte" name="fonte" class="form-input rounded p-2 bg-zinc-900" value="Custom" placeholder="Customizado">
                     </div>
                 </div>
                 
@@ -172,7 +177,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div>
                         <label for="ritual-elemento" class="block text-sm font-medium text-zinc-300 mb-1">Elemento</label>
-                        <select id="ritual-elemento" name="elemento" class="form-select" required>
+                        <select id="ritual-elemento" name="elemento" class="form-select form-input rounded p-2 bg-zinc-900" required>
                             <option value="Conhecimento">Conhecimento</option>
                             <option value="Sangue">Sangue</option>
                             <option value="Morte">Morte</option>
@@ -182,8 +187,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="ritual-nivel" class="block text-sm font-medium text-zinc-300 mb-1">Nível</label>
-                        <select id="ritual-nivel" name="nivel" class="form-select" required>
+                        <label for="ritual-nivel" class="block text-sm font-medium text-zinc-300 mb-1">Círculo</label>
+                        <select id="ritual-nivel" name="nivel" class="form-select form-input rounded p-2 bg-zinc-900" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -192,7 +197,7 @@
                     </div>
                     <div>
                         <label for="ritual-execucao" class="block text-sm font-medium text-zinc-300 mb-1">Execução</label>
-                        <select id="ritual-execucao" name="execução" class="form-select" required>
+                        <select id="ritual-execucao" name="execução" class="form-select form-input rounded p-2 bg-zinc-900" required>
                             <option value="Padrão">Padrão</option>
                             <option value="Movimento">Movimento</option>
                             <option value="Completa">Completa</option>
@@ -202,7 +207,7 @@
                     </div>
                     <div>
                         <label for="ritual-alcance" class="block text-sm font-medium text-zinc-300 mb-1">Alcance</label>
-                        <select id="ritual-alcance" name="alcance" class="form-select" required>
+                        <select id="ritual-alcance" name="alcance" class="form-select form-input rounded p-2 bg-zinc-900" required>
                             <option value="Pessoal">Pessoal</option>
                             <option value="Toque">Toque</option>
                             <option value="Curto">Curto</option>
@@ -218,27 +223,158 @@
                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label for="ritual-alvo" class="block text-sm font-medium text-zinc-300 mb-1">Alvo</label>
-                        <input type="text" id="ritual-alvo" name="alvo" class="form-input">
+                        <input type="text" id="ritual-alvo" name="alvo" class="form-input form-input rounded p-2 bg-zinc-900">
                     </div>
                     <div>
                         <label for="ritual-duracao" class="block text-sm font-medium text-zinc-300 mb-1">Duração</label>
-                        <input type="text" id="ritual-duracao" name="duração" class="form-input">
+                        <input type="text" id="ritual-duracao" name="duração" class="form-input form-input rounded p-2 bg-zinc-900">
                     </div>
                     <div>
                         <label for="ritual-resistencia" class="block text-sm font-medium text-zinc-300 mb-1">Resistência</label>
-                        <input type="text" id="ritual-resistencia" name="resistência" class="form-input">
+                        <input type="text" id="ritual-resistencia" name="resistência" class="form-input form-input rounded p-2 bg-zinc-900">
                     </div>
                 </div>
 
                 <!-- Descrição -->
                 <div>
                     <label for="ritual-descricao" class="block text-sm font-medium text-zinc-300 mb-1">Descrição</label>
-                    <textarea id="ritual-descricao" name="descricao" rows="4" class="form-textarea" required></textarea>
+                    
+                    <!-- Área de editor rich text -->
+                    <div id="ritual-descricao-editor" class="form-textarea form-input rounded p-2 bg-zinc-900 min-h-[120px] max-h-[300px] overflow-y-auto" contenteditable="true"></div>
+                    
+                    <!-- Textarea oculto que manterá o valor HTML para o formulário -->
+                    <textarea id="ritual-descricao" name="descricao" class="hidden" required></textarea>
+                    
+                    <!-- Barra de ferramentas do editor -->
+                    <div class="mt-2 flex gap-2 flex-wrap bg-zinc-800 p-2 rounded-lg">
+                        <button type="button" class="format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="bold" title="Negrito">
+                            <i data-lucide="bold" class="w-4 h-4"></i>
+                        </button>
+                        <button type="button" class="format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="italic" title="Itálico">
+                            <i data-lucide="italic" class="w-4 h-4"></i>
+                        </button>
+                        <button type="button" class="format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="underline" title="Sublinhado">
+                            <i data-lucide="underline" class="w-4 h-4"></i>
+                        </button>
+                        <div class="w-px h-6 bg-zinc-600 my-1"></div>
+                        <button type="button" class="bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" onclick="clearFormatting()" title="Limpar formatação">
+                            <i data-lucide="eraser" class="w-4 h-4"></i>
+                        </button>
+                    </div>
                 </div>
                 
+                <script>
+                    // Inicializar o editor
+                    const editor = document.getElementById('ritual-descricao-editor');
+                    const hiddenTextarea = document.getElementById('ritual-descricao');
+                    
+                    // Sincronizar o conteúdo do editor com o textarea oculto
+                    function syncEditorContent() {
+                        hiddenTextarea.value = editor.innerHTML;
+                        updateButtonStates();
+                    }
+                    
+                    // Atualizar o estado visual dos botões
+                    function updateButtonStates() {
+                        document.querySelectorAll('.format-btn').forEach(button => {
+                            const command = button.dataset.command;
+                            const isActive = document.queryCommandState(command);
+                            
+                            if (isActive) {
+                                button.classList.add('bg-zinc-600', 'text-zinc-400');
+                                button.classList.remove('bg-zinc-700');
+                            } else {
+                                button.classList.remove('bg-zinc-600', 'text-zinc-400');
+                                button.classList.add('bg-zinc-700');
+                            }
+                        });
+                    }
+                    
+                    // Adicionar event listeners para sincronização
+                    editor.addEventListener('input', syncEditorContent);
+                    editor.addEventListener('blur', syncEditorContent);
+                    editor.addEventListener('mouseup', updateButtonStates);
+                    editor.addEventListener('keyup', updateButtonStates);
+                    
+                    // Configurar os botões de formatação
+                    document.querySelectorAll('.format-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const command = this.dataset.command;
+                            document.execCommand(command, false, null);
+                            editor.focus();
+                            syncEditorContent();
+                        });
+                    });
+                    
+                    // Função para limpar formatação
+                    function clearFormatting() {
+                        document.execCommand('removeFormat', false, null);
+                        document.execCommand('unlink', false, null);
+                        syncEditorContent();
+                        editor.focus();
+                    }
+                    
+                    // Permitir atalhos de teclado (Ctrl+B, Ctrl+I, etc.)
+                    editor.addEventListener('keydown', function(e) {
+                        if (e.ctrlKey || e.metaKey) {
+                            switch(e.key) {
+                                case 'b':
+                                    e.preventDefault();
+                                    document.execCommand('bold', false, null);
+                                    syncEditorContent();
+                                    break;
+                                case 'i':
+                                    e.preventDefault();
+                                    document.execCommand('italic', false, null);
+                                    syncEditorContent();
+                                    break;
+                                case 'u':
+                                    e.preventDefault();
+                                    document.execCommand('underline', false, null);
+                                    syncEditorContent();
+                                    break;
+                            }
+                        }
+                    });
+                    
+                    // Garantir que o conteúdo seja sincronizado antes do envio do formulário
+                    document.getElementById('create-ritual-form').addEventListener('submit', function() {
+                        syncEditorContent();
+                    });
+                    
+                    // Renderizar ícones da Lucide
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const icons = document.querySelectorAll('[data-lucide]');
+                        icons.forEach(icon => {
+                            const iconName = icon.getAttribute('data-lucide');
+                            if (lucideReact && lucideReact[iconName]) {
+                                // Substituir pelo ícone real da Lucide
+                                const lucideIcon = lucideReact[iconName];
+                                // Esta parte precisaria de adaptação dependendo de como a Lucide está sendo usada
+                                // Como fallback, vamos manter o elemento i com classe para estilização
+                            }
+                        });
+                    });
+                </script>
+                
+                <style>
+                    /* Estilização básica para o conteúdo editável */
+                    #ritual-descricao-editor:focus {
+                        outline: none;
+                        border-color: #8218fa;
+                    }
+                    
+                    /* Garantir que os ícones sejam visíveis */
+                    [data-lucide] {
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        stroke-width: 1.5;
+                    }
+                </style>
                 <!-- Modificações -->
                 <div>
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Modificações</h3>
+                    <h3 class="text-lg font-semibold text-zinc-400 mb-2">Modificações</h3>
                     <div id="modifications-container" class="space-y-3">
                         <!-- Inputs de modificação serão adicionados aqui -->
                     </div>
@@ -614,7 +750,7 @@
                 let html = '';
                 filterGroups.forEach(group => {
                     if (group.values.length === 0) return;
-                    html += `<div><h3 class="text-lg font-semibold text-purple-400 mb-2">${group.displayName}</h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">`;
+                    html += `<div><h3 class="text-lg font-semibold text-stone-400 mb-2">${group.displayName}</h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">`;
                     group.values.forEach(value => {
                         const isChecked = activeFilters[group.dataKey] && activeFilters[group.dataKey].includes(String(value));
                         html += `
