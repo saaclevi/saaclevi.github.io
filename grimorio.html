@@ -162,14 +162,14 @@
             </div>
             <form id="create-ritual-form" class="space-y-4">
                 <!-- Linha 1: Nome e Fonte -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="md:col-span-2">
+                <div class="flex sm:flex-row lg:flex-col">
+                    <div class="flex-col flex-1 p-2 w-100">
                         <label for="ritual-nome" class="block text-sm font-medium text-zinc-200 mb-2 ">Nome do Ritual</label>
-                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="form-input rounded p-2 bg-zinc-900" required>
+                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="form-input rounded p-2 bg-zinc-900 w-100" required>
                     </div>
-                    <div>
+                    <div class="flex-col flex-1 p-2 w-100">
                         <label for="ritual-fonte" class="block text-sm font-medium text-zinc-300 mb-1">Fonte</label>
-                        <input type="text" id="ritual-fonte" name="fonte" class="form-input rounded p-2 bg-zinc-900" value="Custom" placeholder="Customizado">
+                        <input type="text" id="ritual-fonte" name="fonte" class="form-input rounded p-2 bg-zinc-900 w-100" value="Custom" placeholder="Customizado">
                     </div>
                 </div>
                 
