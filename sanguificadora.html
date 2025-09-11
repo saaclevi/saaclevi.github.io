@@ -93,6 +93,33 @@
         .controls, .actions {
             margin-top: 20px;
         }
+        #meioameio {
+            background-color: #850000ff !important;
+            color: #ffffffff !important;
+            border: 1px solid #ffffffff !important;
+        }
+        #meioameio:hover {
+            background-color: #ffffffff !important;
+            color: #850000ff !important;
+        }
+        #branco {
+            background-color: #ffffffff !important;
+            color: #850000ff !important;
+            border: 1px solid #ffffffff !important;
+        }
+        #branco:hover {
+            background-color: #850000ff !important;
+            color: #ffffffff !important;
+        }
+        #preto {
+            background-color: #000000ff !important;
+            color: #ffffffff !important;
+            border: 1px solid #ffffffff !important;
+        }
+        #preto:hover {
+            background-color: #ffffffff !important;
+            color: #000000ff !important;
+        }
         button, label {
             background-color: #000000ff;
             color: #ffffffff;
@@ -106,7 +133,7 @@
             font-size: 14px;
         }
         button:hover, label:hover {
-            background-color: #dceafc;
+            background-color: #ffffffff;
             color: #000000ff;
         }
         #save-btn {
@@ -144,9 +171,9 @@
         <div class="controls" id="filter-controls" style="display: none;">
             <!-- Botão para aplicar o filtro de sanguificação -->
             <!-- Novo botão para adicionar a imagem de sangue -->
-            <button onclick="addSangueOverlay(0)">Sanguifique-a 1</button>
-            <button onclick="addSangueOverlay(1)">Sanguifique-a 2</button>
-            <button onclick="addSangueOverlay(2)">Sanguifique-a 3</button>
+            <button id="meioameio" onclick="addSangueOverlay(0)">Sanguifique-a 1</button>
+            <button id="branco" onclick="addSangueOverlay(1)">Sanguifique-a 2</button>
+            <button id="preto" onclick="addSangueOverlay(2)">Sanguifique-a 3</button>
             <button onclick="applySanguificacaoFilter()">Torne-a Vermelha</button>
             <button onclick="resetImage()">Resetar</button>
             
