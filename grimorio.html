@@ -32,6 +32,7 @@
       }
     </script>
     <style>
+        
         /* Estilo para a barra de rolagem */
         ::selection {
             background-color: #5f5e54;
@@ -63,7 +64,22 @@
         .form-input, .form-select, .form-textarea {
             @apply w-full bg-zinc-700 text-white rounded-lg p-2 border border-zinc-600 focus:outline-none focus:border-purple-500 transition;
         }
-
+        @media (max-width: 710px) { /*sm:flex-col lg:flex-row*/
+            .custom-sm {
+            display: flex;
+            flex-direction: column;
+            }  
+        }
+        @media (min-width: 711px) {
+            .custom-lm {
+            display: flex;
+            flex-direction: row;
+            }  
+        }
+        input,
+        select {
+        height: 40px !important;
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 font-sans antialiased">
@@ -152,7 +168,22 @@
             </div>
         </div>
     </div>
-    
+
+    <style>
+        /* Estilização básica para o conteúdo editável */
+        .criador:focus {
+            outline:1px solid #d6d3d1;
+        }
+        
+        /* Garantir que os ícones sejam visíveis */
+        [data-lucide] {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            stroke-width: 1.5;
+        }
+    </style>
+
     <!-- Modal de Criar Ritual -->
     <div id="create-ritual-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="bg-zinc-800 rounded-lg shadow-xl p-6 w-11/12 max-w-3xl max-h-[90vh] overflow-y-auto">
@@ -162,22 +193,22 @@
             </div>
             <form id="create-ritual-form" class="space-y-4">
                 <!-- Linha 1: Nome e Fonte -->
-                <div class="flex sm:flex-row lg:flex-col">
-                    <div class="flex-col flex-1 p-2 w-100">
-                        <label for="ritual-nome" class="block text-sm font-medium text-zinc-200 mb-2 ">Nome do Ritual</label>
-                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="form-input rounded p-2 bg-zinc-900 w-100" required>
+                <div class="flex custom-sm custom-lm gap-3">
+                    <div class="flex-col flex-1 pt-2 w-full">
+                        <label for="ritual-nome" class="block text-sm font-medium text-zinc-300 mb-2 ">Nome do Ritual</label>
+                        <input type="text" id="ritual-nome" name="nome_do_ritual" class="criador form-input rounded p-2 bg-zinc-900 w-full" required>
                     </div>
-                    <div class="flex-col flex-1 p-2 w-100">
-                        <label for="ritual-fonte" class="block text-sm font-medium text-zinc-300 mb-1">Fonte</label>
-                        <input type="text" id="ritual-fonte" name="fonte" class="form-input rounded p-2 bg-zinc-900 w-100" value="Custom" placeholder="Customizado">
+                    <div class="flex-col flex-1 pt-2 w-full">
+                        <label for="ritual-fonte" class="block text-sm font-medium text-zinc-300 mb-2">Fonte</label>
+                        <input type="text" id="ritual-fonte" name="fonte" class="criador form-input rounded p-2 bg-zinc-900 w-full" value="" placeholder="Ex: Módulo, Campanha, Livro.">
                     </div>
                 </div>
                 
                 <!-- Linha 2: Elemento, Nivel, Execução, Alcance -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 justify-start gap-3">
                     <div>
-                        <label for="ritual-elemento" class="block text-sm font-medium text-zinc-300 mb-1">Elemento</label>
-                        <select id="ritual-elemento" name="elemento" class="form-select form-input rounded p-2 bg-zinc-900" required>
+                        <label for="ritual-elemento" class="block text-sm font-medium text-zinc-300 mb-2">Elemento</label>
+                        <select id="ritual-elemento" name="elemento" class="criador form-select w-full form-input rounded p-2 bg-zinc-900" required>
                             <option value="Conhecimento">Conhecimento</option>
                             <option value="Sangue">Sangue</option>
                             <option value="Morte">Morte</option>
@@ -187,8 +218,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="ritual-nivel" class="block text-sm font-medium text-zinc-300 mb-1">Círculo</label>
-                        <select id="ritual-nivel" name="nivel" class="form-select form-input rounded p-2 bg-zinc-900" required>
+                        <label for="ritual-nivel" class="block text-sm font-medium text-zinc-300 mb-2">Círculo</label>
+                        <select id="ritual-nivel" name="nivel" class="criador form-select w-full form-input rounded p-2 bg-zinc-900" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -196,8 +227,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="ritual-execucao" class="block text-sm font-medium text-zinc-300 mb-1">Execução</label>
-                        <select id="ritual-execucao" name="execução" class="form-select form-input rounded p-2 bg-zinc-900" required>
+                        <label for="ritual-execucao" class="block text-sm font-medium text-zinc-300 mb-2">Execução</label>
+                        <select id="ritual-execucao" name="execução" class="criador form-select w-full form-input rounded p-2 bg-zinc-900" required>
                             <option value="Padrão">Padrão</option>
                             <option value="Movimento">Movimento</option>
                             <option value="Completa">Completa</option>
@@ -206,8 +237,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="ritual-alcance" class="block text-sm font-medium text-zinc-300 mb-1">Alcance</label>
-                        <select id="ritual-alcance" name="alcance" class="form-select form-input rounded p-2 bg-zinc-900" required>
+                        <label for="ritual-alcance" class="block text-sm font-medium text-zinc-300 mb-2">Alcance</label>
+                        <select id="ritual-alcance" name="alcance" class="criador form-select w-full form-input rounded p-2 bg-zinc-900" required>
                             <option value="Pessoal">Pessoal</option>
                             <option value="Toque">Toque</option>
                             <option value="Curto">Curto</option>
@@ -222,25 +253,25 @@
                 <!-- Linha 3: Alvo, Duração, Resistência -->
                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label for="ritual-alvo" class="block text-sm font-medium text-zinc-300 mb-1">Alvo</label>
-                        <input type="text" id="ritual-alvo" name="alvo" class="form-input form-input rounded p-2 bg-zinc-900">
+                        <label for="ritual-alvo" class="block text-sm font-medium text-zinc-300 mb-2">Alvo</label>
+                        <input type="text" id="ritual-alvo" name="alvo" class="criador form-input form-input rounded p-2 bg-zinc-900 w-full">
                     </div>
                     <div>
-                        <label for="ritual-duracao" class="block text-sm font-medium text-zinc-300 mb-1">Duração</label>
-                        <input type="text" id="ritual-duracao" name="duração" class="form-input form-input rounded p-2 bg-zinc-900">
+                        <label for="ritual-duracao" class="block text-sm font-medium text-zinc-300 mb-2">Duração</label>
+                        <input type="text" id="ritual-duracao" name="duração" class="criador form-input form-input rounded p-2 bg-zinc-900 w-full">
                     </div>
                     <div>
-                        <label for="ritual-resistencia" class="block text-sm font-medium text-zinc-300 mb-1">Resistência</label>
-                        <input type="text" id="ritual-resistencia" name="resistência" class="form-input form-input rounded p-2 bg-zinc-900">
+                        <label for="ritual-resistencia" class="block text-sm font-medium text-zinc-300 mb-2">Resistência</label>
+                        <input type="text" id="ritual-resistencia" name="resistência" class="criador form-input form-input rounded p-2 bg-zinc-900 w-full">
                     </div>
                 </div>
 
                 <!-- Descrição -->
                 <div>
-                    <label for="ritual-descricao" class="block text-sm font-medium text-zinc-300 mb-1">Descrição</label>
+                    <label for="ritual-descricao" class="block text-sm font-medium text-zinc-300 mb-2">Descrição</label>
                     
                     <!-- Área de editor rich text -->
-                    <div id="ritual-descricao-editor" class="form-textarea form-input rounded p-2 bg-zinc-900 min-h-[120px] max-h-[300px] overflow-y-auto" contenteditable="true"></div>
+                    <div id="ritual-descricao-editor" class="criador form-textarea form-input rounded p-2 bg-zinc-900 min-h-[120px] max-h-[300px] overflow-y-auto" contenteditable="true"></div>
                     
                     <!-- Textarea oculto que manterá o valor HTML para o formulário -->
                     <textarea id="ritual-descricao" name="descricao" class="hidden" required></textarea>
@@ -357,21 +388,7 @@
                     });
                 </script>
                 
-                <style>
-                    /* Estilização básica para o conteúdo editável */
-                    #ritual-descricao-editor:focus {
-                        outline: none;
-                        border-color: #8218fa;
-                    }
-                    
-                    /* Garantir que os ícones sejam visíveis */
-                    [data-lucide] {
-                        display: inline-block;
-                        width: 16px;
-                        height: 16px;
-                        stroke-width: 1.5;
-                    }
-                </style>
+                
                 <!-- Modificações -->
                 <div>
                     <h3 class="text-lg font-semibold text-zinc-400 mb-2">Modificações</h3>
@@ -385,7 +402,7 @@
                 
                 <!-- Botões de Ação -->
                 <div class="mt-6 flex gap-4 pt-4 border-t border-zinc-700">
-                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition">Salvar Ritual</button>
+                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-zinc-900 font-bold py-2 px-4 rounded-lg transition">Salvar Ritual</button>
                     <button type="button" id="cancel-create-ritual-button" class="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded-lg transition">Cancelar</button>
                 </div>
             </form>
@@ -401,6 +418,8 @@
             let allRituals = []; 
             let learnedRituals = new Set();
             let customCategories = {};
+            let apagados = new Set(JSON.parse(localStorage.getItem('apagados') || '[]'));
+
             
             let currentSort = 'alphabetical';
             let activeFilters = {};
@@ -490,55 +509,66 @@
             function saveCustomRituals() {
                 localStorage.setItem('customRituals', JSON.stringify(customRituals));
             }
+            function saveApagados() {
+                localStorage.setItem('apagados', JSON.stringify([...apagados]));
+            }
+
 
             // --- LÓGICA DE RENDERIZAÇÃO ---
             function renderRituals() {
                 ritualList.innerHTML = '';
                 
                 let filteredRituals = allRituals.filter(ritual => {
-                    if (showOnlyLearned && !learnedRituals.has(ritual.nome_do_ritual)) {
-                        return false;
-                    }
-                    for (const key in activeFilters) {
-                        if (activeFilters[key].length > 0) {
-                            const ritualValue = key === 'categoria' 
-                                ? customCategories[ritual.nome_do_ritual] || 'Sem Categoria'
-                                : ritual[key];
-                            if (!ritualValue || !activeFilters[key].includes(String(ritualValue))) {
-                                return false;
-                            }
+                // 1) Se está apagado, não mostra
+                if (apagados.has(ritual.nome_do_ritual)) {
+                    return false;
+                }
+
+                // 2) Se está no modo “só aprendidos” mas o ritual não está aprendido
+                if (showOnlyLearned && !learnedRituals.has(ritual.nome_do_ritual)) {
+                    return false;
+                }
+
+                // 3) Aplicação dos filtros normais
+                for (const key in activeFilters) {
+                    if (activeFilters[key].length > 0) {
+                        const ritualValue = key === 'categoria' 
+                            ? customCategories[ritual.nome_do_ritual] || 'Sem Categoria'
+                            : ritual[key];
+                        if (!ritualValue || !activeFilters[key].includes(String(ritualValue))) {
+                            return false;
                         }
                     }
-                    return true;
+                }
+                return true;
                 });
-
                 const elementOrder = ['MORTE', 'SANGUE', 'CONHECIMENTO', 'ENERGIA', 'MEDO', 'VARIA'];
                 filteredRituals.sort((a, b) => {
-                    switch (currentSort) {
-                        case 'level':
-                            if (a.nivel !== b.nivel) return a.nivel - b.nivel;
-                            return a.nome_do_ritual.localeCompare(b.nome_do_ritual);
-                        case 'element':
-                            const indexA = elementOrder.indexOf(a.elemento.toUpperCase());
-                            const indexB = elementOrder.indexOf(b.elemento.toUpperCase());
-                            if (indexA !== indexB) return indexA - indexB;
-                            return a.nome_do_ritual.localeCompare(b.nome_do_ritual);
-                        case 'alphabetical':
-                        default:
-                            return a.nome_do_ritual.localeCompare(b.nome_do_ritual);
-                    }
-                });
-                
-                if (filteredRituals.length === 0) {
-                    ritualList.innerHTML = `<p class="text-zinc-400 col-span-full text-center py-10">Nenhum ritual encontrado com os filtros atuais.</p>`;
-                } else {
-                    filteredRituals.forEach(ritual => {
-                        const card = createRitualCard(ritual);
-                        ritualList.appendChild(card);
-                        setTimeout(() => card.classList.add('ritual-card-enter-active'), 50);
-                    });
+                switch (currentSort) {
+                    case 'level':
+                        if (a.nivel !== b.nivel) return a.nivel - b.nivel;
+                        return a.nome_do_ritual.localeCompare(b.nome_do_ritual);
+                    case 'element':
+                        const indexA = elementOrder.indexOf(a.elemento.toUpperCase());
+                        const indexB = elementOrder.indexOf(b.elemento.toUpperCase());
+                        if (indexA !== indexB) return indexA - indexB;
+                        return a.nome_do_ritual.localeCompare(b.nome_do_ritual);
+                    case 'alphabetical':
+                    default:
+                        return a.nome_do_ritual.localeCompare(b.nome_do_ritual);
                 }
+            });
+            
+            if (filteredRituals.length === 0) {
+                ritualList.innerHTML = `<p class="text-zinc-400 col-span-full text-center py-10">Nenhum ritual encontrado com os filtros atuais.</p>`;
+            } else {
+                filteredRituals.forEach(ritual => {
+                    const card = createRitualCard(ritual);
+                    ritualList.appendChild(card);
+                    setTimeout(() => card.classList.add('ritual-card-enter-active'), 50);
+                });
             }
+        }
             
             function createRitualCard(ritual) {
                 const isLearned = learnedRituals.has(ritual.nome_do_ritual);
@@ -576,8 +606,9 @@
                 card.innerHTML = `
                     <div class="p-4 cursor-pointer ritual-header">
                         <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold font-serif tracking-wide text-white">${ritual.nome_do_ritual}</h3>
+                            <div class="flex-grow max-w-[calc(100%-3rem)]"> <!-- Ajuste de max-width -->
+                                <!-- Título com a propriedade de quebra de linha e max-width para controlar a quebra -->
+                                <h3 class="text-xl font-bold font-serif tracking-wide text-white break-words">${ritual.nome_do_ritual}</h3>
                                 <div class="flex items-center gap-3 text-xs mt-1 flex-wrap">
                                     <span class="${elementTextClass} font-semibold">${ritual.elemento} ${ritual.nivel}</span>
                                     <span class="text-zinc-500">•</span>
@@ -585,9 +616,19 @@
                                     ${ritual.fonte ? `<span class="text-zinc-500">•</span><span class="text-zinc-500">${ritual.fonte}</span>` : ''}
                                 </div>
                             </div>
-                            <button class="learn-button p-2 rounded-full ${isLearned ? 'bg-yellow-500 text-zinc-900' : 'bg-zinc-700 text-zinc-400'} hover:bg-yellow-400 transition flex-shrink-0" data-ritual-name="${ritual.nome_do_ritual}" title="${isLearned ? 'Esquecer' : 'Aprender'}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
-                            </button>
+                            <!-- Botões alinhados à direita -->
+                            <div class="flex gap-2 pl-2 flex-shrink-0">
+                                <button class="delete-button p-2 rounded-full bg-zinc-700 text-zinc-400 hover:bg-red-500 hover:text-zinc-700 transition" 
+                                    data-ritual-name="${ritual.nome_do_ritual}" title="Apagar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 6h18M9 6V4h6v2m2 0v14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V6h10z"></path>
+                                    </svg>
+                                </button>
+                                <button class="learn-button p-2 rounded-full ${isLearned ? 'bg-yellow-500 text-zinc-900' : 'bg-zinc-700 text-zinc-400'} hover:bg-yellow-400 hover:text-zinc-700 transition flex-shrink-0" data-ritual-name="${ritual.nome_do_ritual}" title="${isLearned ? 'Esquecer' : 'Aprender'}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="ritual-details hidden px-4 pb-4">
@@ -596,12 +637,17 @@
                         ${modificationsHTML}
                     </div>
                 `;
-                
+
                 card.querySelector('.ritual-header').addEventListener('click', (e) => {
                     if (e.target.closest('button') || e.target.closest('.category-text')) return;
                     card.querySelector('.ritual-details').classList.toggle('hidden');
                 });
                 card.querySelector('.learn-button').addEventListener('click', handleLearnToggle);
+                card.querySelector('.delete-button').addEventListener('click', (e) => {
+                    apagados.add(e.currentTarget.dataset.ritualName);
+                    saveApagados();
+                    renderRituals();
+                });
                 card.querySelector('.category-text').addEventListener('click', handleCategoryEdit);
                 return card;
             }
@@ -629,7 +675,7 @@
                 createRitualForm.addEventListener('submit', handleSaveRitual);
                 filterModal.addEventListener('click', (e) => { if (e.target === filterModal) filterModal.classList.add('hidden'); });
                 categoryModal.addEventListener('click', (e) => { if (e.target === categoryModal) categoryModal.classList.add('hidden'); });
-                createRitualModal.addEventListener('click', (e) => { if (e.target === createRitualModal) createRitualModal.classList.add('hidden'); });
+                //createRitualModal.addEventListener('click', (e) => { if (e.target === createRitualModal) createRitualModal.classList.add('hidden'); });
             }
 
             function handleLearnToggle(e) {

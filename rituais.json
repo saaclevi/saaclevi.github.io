@@ -2,6 +2,7 @@
   {
     "nome_do_ritual": "Alterar Destino",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 4,
@@ -21,6 +22,7 @@
   {
     "nome_do_ritual": "Alterar Memória",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 3,
@@ -44,6 +46,7 @@
   {
     "nome_do_ritual": "Amaldiçoar Arma",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "VARIA",
     "nivel": 1,
@@ -75,6 +78,7 @@
   {
     "nome_do_ritual": "Amaldiçoar Tecnologia",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 1,
@@ -106,6 +110,7 @@
   {
     "nome_do_ritual": "Âncora Temporal",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 3,
@@ -129,6 +134,7 @@
   {
     "nome_do_ritual": "Aprimorar Físico",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 2,
@@ -160,6 +166,7 @@
   {
     "nome_do_ritual": "Aprimorar Mente",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 2,
@@ -191,6 +198,7 @@
   {
     "nome_do_ritual": "Arma Atroz",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 1,
@@ -222,6 +230,7 @@
   {
     "nome_do_ritual": "Armadura de Sangue",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 1,
@@ -253,6 +262,7 @@
   {
     "nome_do_ritual": "Barganha Insana",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 3,
@@ -265,6 +275,7 @@
   {
     "nome_do_ritual": "Canalizar o Medo",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 4,
@@ -277,6 +288,7 @@
   {
     "nome_do_ritual": "Capturar o Coração",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 4,
@@ -290,6 +302,7 @@
   {
     "nome_do_ritual": "Chamas do Caos",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 2,
@@ -317,6 +330,7 @@
   {
     "nome_do_ritual": "Cicatrização",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 1,
@@ -348,6 +362,7 @@
   {
     "nome_do_ritual": "Cinerária",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 1,
@@ -372,6 +387,7 @@
   {
     "nome_do_ritual": "Coincidência Forçada",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 1,
@@ -403,6 +419,7 @@
   {
     "nome_do_ritual": "Compreensão Paranormal",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 1,
@@ -434,6 +451,7 @@
   {
     "nome_do_ritual": "Conhecendo o Medo",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 4,
@@ -447,6 +465,7 @@
   {
     "nome_do_ritual": "Consumir Manancial",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 1,
@@ -478,6 +497,7 @@
   {
     "nome_do_ritual": "Contato Paranormal",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 3,
@@ -509,6 +529,7 @@
   {
     "nome_do_ritual": "Contenção Fantasmagórica",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 2,
@@ -541,6 +562,7 @@
   {
     "nome_do_ritual": "Controle Mental",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 4,
@@ -566,6 +588,7 @@
   {
     "nome_do_ritual": "Convocação Instantânea",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 3,
@@ -591,6 +614,7 @@
   {
     "nome_do_ritual": "Convocar o Algoz",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 4,
@@ -604,6 +628,7 @@
   {
     "nome_do_ritual": "Corpo Adaptado",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 1,
@@ -629,6 +654,7 @@
   {
     "nome_do_ritual": "Decadência",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 1,
@@ -657,6 +683,7 @@
   {
     "nome_do_ritual": "Definhar",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 1,
@@ -689,6 +716,7 @@
   {
     "nome_do_ritual": "Deflagração de Energia",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 4,
@@ -708,6 +736,7 @@
   {
     "nome_do_ritual": "Desacelerar Impacto",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 2,
@@ -727,6 +756,7 @@
   {
     "nome_do_ritual": "Descarnar",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 2,
@@ -759,6 +789,7 @@
   {
     "nome_do_ritual": "Detecção de Ameaças",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 2,
@@ -789,6 +820,7 @@
   {
     "nome_do_ritual": "Dissipar Ritual",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 3,
@@ -801,6 +833,7 @@
   {
     "nome_do_ritual": "Dissonância Acústica",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 2,
@@ -828,6 +861,7 @@
   {
     "nome_do_ritual": "Distorção Temporal",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 4,
@@ -840,6 +874,7 @@
   {
     "nome_do_ritual": "Distorcer Aparência",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 1,
@@ -868,6 +903,7 @@
   {
     "nome_do_ritual": "Eco Espiral",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 2,
@@ -897,6 +933,7 @@
   {
     "nome_do_ritual": "Eletrocussão",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 1,
@@ -928,6 +965,7 @@
   {
     "nome_do_ritual": "Embaralhar",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 1,
@@ -958,6 +996,7 @@
   {
     "nome_do_ritual": "Enfeitiçar",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 1,
@@ -989,6 +1028,7 @@
   {
     "nome_do_ritual": "Esconder dos Olhos",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 2,
@@ -1020,6 +1060,7 @@
   {
     "nome_do_ritual": "Espirais da Perdição",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 1,
@@ -1050,6 +1091,7 @@
   {
     "nome_do_ritual": "Ferver Sangue",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 3,
@@ -1074,6 +1116,7 @@
   {
     "nome_do_ritual": "Fim Inevitável",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 4,
@@ -1098,6 +1141,7 @@
   {
     "nome_do_ritual": "Flagelo de Sangue",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 2,
@@ -1130,6 +1174,7 @@
   {
     "nome_do_ritual": "Forma Monstruosa",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 3,
@@ -1158,6 +1203,7 @@
   {
     "nome_do_ritual": "Fortalecimento Sensorial",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 1,
@@ -1189,6 +1235,7 @@
   {
     "nome_do_ritual": "Hemofagia",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 2,
@@ -1217,6 +1264,7 @@
   {
     "nome_do_ritual": "Inexistir",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 4,
@@ -1242,6 +1290,7 @@
   {
     "nome_do_ritual": "Invadir Mente",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 2,
@@ -1273,6 +1322,7 @@
   {
     "nome_do_ritual": "Invólucro de Carne",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 4,
@@ -1285,6 +1335,7 @@
   {
     "nome_do_ritual": "Lâmina do Medo",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 4,
@@ -1298,6 +1349,7 @@
   {
     "nome_do_ritual": "Localização",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 2,
@@ -1325,6 +1377,7 @@
   {
     "nome_do_ritual": "Luz",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 1,
@@ -1356,6 +1409,7 @@
   {
     "nome_do_ritual": "Medo Tangível",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 4,
@@ -1368,6 +1422,7 @@
   {
     "nome_do_ritual": "Mergulho Mental",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 3,
@@ -1391,6 +1446,7 @@
   {
     "nome_do_ritual": "Miasma Entrópico",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 2,
@@ -1419,6 +1475,7 @@
   {
     "nome_do_ritual": "Nuvem de Cinzas",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 1,
@@ -1448,6 +1505,7 @@
   {
     "nome_do_ritual": "Ódio Incontrolável",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 1,
@@ -1476,6 +1534,7 @@
   {
     "nome_do_ritual": "Ouvir os Sussurros",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 1,
@@ -1506,6 +1565,7 @@
   {
     "nome_do_ritual": "Paradoxo",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 2,
@@ -1534,6 +1594,7 @@
   {
     "nome_do_ritual": "Perturbação",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 1,
@@ -1563,6 +1624,7 @@
   {
     "nome_do_ritual": "Poeira da Podridão",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 3,
@@ -1583,6 +1645,7 @@
   {
     "nome_do_ritual": "Polarização Caótica",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 1,
@@ -1608,6 +1671,7 @@
   {
     "nome_do_ritual": "Possessão",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 4,
@@ -1621,6 +1685,7 @@
   {
     "nome_do_ritual": "Presença do Medo",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 4,
@@ -1633,6 +1698,7 @@
   {
     "nome_do_ritual": "Proteção contra Rituais",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 2,
@@ -1655,6 +1721,7 @@
   {
     "nome_do_ritual": "Purgatório",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 3,
@@ -1668,6 +1735,7 @@
   {
     "nome_do_ritual": "Rejeitar Névoa",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MEDO",
     "nivel": 2,
@@ -1692,6 +1760,7 @@
   {
     "nome_do_ritual": "Salto Fantasma",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 3,
@@ -1716,6 +1785,7 @@
   {
     "nome_do_ritual": "Sopro do Caos",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 2,
@@ -1741,6 +1811,7 @@
   {
     "nome_do_ritual": "Tecer Ilusão",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 1,
@@ -1771,6 +1842,7 @@
   {
     "nome_do_ritual": "Tela de Ruído",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 2,
@@ -1798,6 +1870,7 @@
   {
     "nome_do_ritual": "Teletransporte",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 4,
@@ -1817,6 +1890,7 @@
   {
     "nome_do_ritual": "Tentáculos de Lodo",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 3,
@@ -1836,6 +1910,7 @@
   {
     "nome_do_ritual": "Terceiro Olho",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 1,
@@ -1860,6 +1935,7 @@
   {
     "nome_do_ritual": "Transfigurar Água",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 3,
@@ -1880,6 +1956,7 @@
   {
     "nome_do_ritual": "Transfigurar Terra",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "ENERGIA",
     "nivel": 3,
@@ -1908,6 +1985,7 @@
   {
     "nome_do_ritual": "Transfusão Vital",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 2,
@@ -1938,6 +2016,7 @@
   {
     "nome_do_ritual": "Velocidade Mortal",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 2,
@@ -1966,6 +2045,7 @@
   {
     "nome_do_ritual": "Vidência",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "CONHECIMENTO",
     "nivel": 3,
@@ -1979,6 +2059,7 @@
   {
     "nome_do_ritual": "Vínculo de Sangue",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 4,
@@ -1992,6 +2073,7 @@
   {
     "nome_do_ritual": "Vomitar Pestes",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "SANGUE",
     "nivel": 3,
@@ -2016,6 +2098,7 @@
   {
     "nome_do_ritual": "Zerar Entropia",
     "categoria": "",
+    "apagado": "0",
     "fonte": "OP",
     "elemento": "MORTE",
     "nivel": 3,
@@ -2047,6 +2130,7 @@
   {
     "nome_do_ritual": "Esfolar",
     "categoria": "",
+    "apagado": "0",
     "fonte": "SoH",
     "elemento": "SANGUE",
     "nivel": 1,
