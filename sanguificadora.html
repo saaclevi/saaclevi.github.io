@@ -146,6 +146,7 @@
             <!-- Novo botão para adicionar a imagem de sangue -->
             <button onclick="addSangueOverlay(0)">Sanguifique-a 1</button>
             <button onclick="addSangueOverlay(1)">Sanguifique-a 2</button>
+            <button onclick="addSangueOverlay(2)">Sanguifique-a 3</button>
             <button onclick="applySanguificacaoFilter()">Torne-a Vermelha</button>
             <button onclick="resetImage()">Resetar</button>
             
@@ -170,6 +171,8 @@
         
         // A URL da imagem de sangue (agora um arquivo local)
         const sangueImageURL = 'sangue.png';
+        const sangueImageURLW = 'sanguew.png';
+        const sangueImageURLB = 'sangueb.png';
 
         // Função para carregar uma imagem principal
         function loadImage(src) {
@@ -247,33 +250,34 @@
         function addSangueOverlay(compositeType) {
             if (!currentImage) return;
 
+            // Define imagem e modo de composição para cada tipo
+            const overlays = [
+                { src: sangueImageURL, mode: 'exclusion' },  // sanguifique-a 1
+                { src: sangueImageURLW, mode: 'add' },  // sanguifique-a 2
+                { src: sangueImageURLB, mode: 'normal' }     // sanguifique-a 3
+            ];
+
+            const { src, mode } = overlays[compositeType] || overlays[0];
+
             const sangueImg = new Image();
             sangueImg.crossOrigin = 'anonymous';
 
             sangueImg.onload = () => {
-            const newWidth = canvas.width * 0.6;
-            const newHeight = (sangueImg.height / sangueImg.width) * newWidth;
-            const x = (canvas.width - newWidth) / 2;
-            const y = (canvas.height - newHeight) / 2;
+                const newWidth = canvas.width * 0.6;
+                const newHeight = (sangueImg.height / sangueImg.width) * newWidth;
+                const x = (canvas.width - newWidth) / 2;
+                const y = (canvas.height - newHeight) / 2;
 
-            ctx.save();
-            if (compositeType === 1) {
-                ctx.globalCompositeOperation = 'multiply';
-            } else if (compositeType === 0) {
-                ctx.globalCompositeOperation = 'exclusion';
-            } else {
-                ctx.globalCompositeOperation = 'source-over';
-            }
+                ctx.save();
+                ctx.globalCompositeOperation = mode;
+                ctx.drawImage(sangueImg, x, y, newWidth, newHeight);
+                ctx.restore();
 
-            ctx.drawImage(sangueImg, x, y, newWidth, newHeight);
-
-            ctx.restore();
-
-            updateCurrentImageFromCanvas();
+                updateCurrentImageFromCanvas();
             };
-            sangueImg.src = sangueImageURL;
+            sangueImg.src = src;
         }
-        
+
 
         // Função para resetar a imagem para a original
         function resetImage() {
@@ -283,13 +287,31 @@
         }
 
         // Evento para salvar a imagem
-        saveBtn.addEventListener('click', () => {
-            if (!currentImage) return;
-            const link = document.createElement('a');
-            link.download = `voce-foi-sanguificado.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        });
+        // Evento para salvar a imagem otimizada
+        // Encontre este bloco de código no arquivo sanguificadora.html
+            saveBtn.addEventListener('click', () => {
+                if (!currentImage) return;
+
+                // Cria um canvas temporário
+                const finalCanvas = document.createElement('canvas');
+                finalCanvas.width = canvas.width;
+                finalCanvas.height = canvas.height;
+                const finalCtx = finalCanvas.getContext('2d');
+
+                // Fundo preto
+                finalCtx.fillStyle = '#000000';
+                finalCtx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
+
+                // Desenha a imagem atual sobre o fundo preto
+                finalCtx.drawImage(canvas, 0, 0);
+                const dataUrl = finalCanvas.toDataURL('image/png');
+
+                const link = document.createElement('a');
+                link.download = 'voce-foi-sanguificado.png';
+                link.href = dataUrl;
+                link.click();
+            });
+
 
     </script>
     
