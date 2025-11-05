@@ -8,6 +8,7 @@
 	<link rel="icon" type="image/x-icon" href="/icon.ico">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMt23cez/3paNdF+Z5p6b6V5g5k5e5k5e5k5e5k" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
@@ -201,7 +202,7 @@
 				<h2 class="text-2xl font-bold text-white">Criar Novo Ritual</h2>
 				<button id="close-create-modal-button" class="text-zinc-400 hover:text-white text-3xl leading-none">&times;</button>
 			</div>
-			<form id="create-ritual-form" class="space-y-4">
+			<form id="create-ritual-form" class="space-y-2">
 				<!-- Linha 1: Nome e Fonte -->
 				<div class="flex custom-sm custom-lm gap-3">
 					<div class="flex-col flex-1 pt-2 w-full">
@@ -276,27 +277,29 @@
 				<!-- Descrição -->
 				<div>
 					<label for="ritual-descricao" class="block text-sm font-medium text-zinc-300 mb-2">Descrição</label>
-					<!-- Área de editor rich text -->
-					<div id="ritual-descricao-editor" class="criador form-textarea form-input rounded p-2 bg-zinc-900 min-h-[120px] max-h-[300px] overflow-y-auto" contenteditable="true"></div>
+					
 					<!-- Textarea oculto que manterá o valor HTML para o formulário -->
 					<textarea id="ritual-descricao" name="descricao" class="hidden" required></textarea>
+				</div>
 					<!-- Barra de ferramentas do editor -->
-					<div class="mt-2 flex gap-2 flex-wrap bg-zinc-800 p-2 rounded-lg">
-						<button type="button" class="format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="bold" title="Negrito">
-							<i data-lucide="bold" class="w-4 h-4"></i>
+					<div class="flex gap-2 flex-wrap bg-zinc-500 rounded-t-lg">
+						<button type="button" class="w-10 h-10 format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="bold" title="Negrito (Ctrl+B)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bold-icon lucide-bold"><path d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"/></svg>
 						</button>
-						<button type="button" class="format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="italic" title="Itálico">
-							<i data-lucide="italic" class="w-4 h-4"></i>
+						<button type="button" class="w-10 h-10 format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="italic" title="Itálico (Ctrl+I)">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-italic-icon lucide-italic"><line x1="19" x2="10" y1="4" y2="4"/><line x1="14" x2="5" y1="20" y2="20"/><line x1="15" x2="9" y1="4" y2="20"/></svg>
 						</button>
-						<button type="button" class="format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="underline" title="Sublinhado">
-							<i data-lucide="underline" class="w-4 h-4"></i>
+						<button type="button" class="w-10 h-10 format-btn bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" data-command="underline" title="Sublinhado (CTRL+U)">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-underline-icon lucide-underline"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" x2="20" y1="20" y2="20"/></svg>
 						</button>
-						<div class="w-px h-6 bg-zinc-600 my-1"></div>
-						<button type="button" class="bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" onclick="clearFormatting()" title="Limpar formatação">
-							<i data-lucide="eraser" class="w-4 h-4"></i>
+						<div class="w-px h-8 bg-zinc-600 my-1"></div>
+						<button type="button" class="w-10 h-10 bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition" onclick="clearFormatting()" title="Limpar formatação da Seleção (Alt+F)">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser-icon lucide-eraser"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"/><path d="m5.082 11.09 8.828 8.828"/></svg>
 						</button>
 					</div>
-				</div>
+					<!-- Área de editor rich text -->
+					<div id="ritual-descricao-editor" class="criador form-textarea form-input rounded p-2 bg-zinc-900 min-h-[120px] max-h-[300px] overflow-y-auto resize-y" contenteditable="true"></div>
+					
 				<script>
 				// Inicializar o editor
 				const editor = document.getElementById('ritual-descricao-editor');
@@ -369,16 +372,7 @@
 				});
 				// Renderizar ícones da Lucide
 				document.addEventListener('DOMContentLoaded', function() {
-					const icons = document.querySelectorAll('[data-lucide]');
-					icons.forEach(icon => {
-						const iconName = icon.getAttribute('data-lucide');
-						if(lucideReact && lucideReact[iconName]) {
-							// Substituir pelo ícone real da Lucide
-							const lucideIcon = lucideReact[iconName];
-							// Esta parte precisaria de adaptação dependendo de como a Lucide está sendo usada
-							// Como fallback, vamos manter o elemento i com classe para estilização
-						}
-					});
+					lucide.createIcons();
 				});
 				</script>
 				<!-- Modificações -->
@@ -754,7 +748,7 @@
                     <input type="text" name="mod_versao" placeholder="Versão (Ex: Discente)" class="bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition form-input md:col-span-2" required>
                     <input type="text" name="mod_custo" placeholder="Custo (Ex: +2 PE)" class="bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition form-input md:col-span-1" required>
                     <textarea name="mod_descricao" placeholder="Descrição da modificação" rows="1" class="bg-zinc-700 hover:bg-zinc-600 text-white p-2 rounded-lg transition form-textarea md:col-span-2" required></textarea>
-                    <button type="button" class="remove-mod-btn bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-lg transition h-10 self-center">Remover</button>
+                    <button type="button" class="remove-mod-btn bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-lg transition h-10 self-center"></button>
                 `;
 			modificationsContainer.appendChild(div);
 			div.querySelector('.remove-mod-btn').addEventListener('click', () => div.remove());
