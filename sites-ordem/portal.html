@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: "Pirata One", system-ui;
-            background-color: #000000ff;
+            background-color: #1a1a1aff;
             color: #ffffffff;
             display: flex;
             justify-content: center;
@@ -23,8 +23,7 @@
             text-align: center;
         }
         .container {
-            background-color: #850000ff;
-            padding: 25px;
+            background-color: #000000ff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -33,12 +32,11 @@
         }
         h1 {
             font-size: 24px;
-            margin-bottom: 40px;
         }
         .link-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            padding: 25px;
             align-items: center;
         }
         .link-button {
@@ -61,16 +59,42 @@
             background-color: #dceafc;
             color: #000000ff;
         }
+        .hoverarroba {
+            color: #ffffffff;
+            font-family: "Epunda Slab", serif;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hoverarroba:hover {
+            color: #000000ff;
+        }
+        .sanguificadora { border: 1px solid #d30b0bff; }
+        .conhecedora { border: 1px solid #f8d303ff; }
+        .energizadora { border: 1px solid #7902b1ff; } 
+        .mortificadora { border: 1px solid #7e7d7eff; } 
+        .amedrontadora { border: 1px solid #dfd3c6ff; } 
+        .grimorio { border: 1px solid #138b4fff; } 
     </style>
 </head>
 <body>
-
+    
     <div class="container">
-        <h1>Ferramentas Normais do Levi</h1>
-
+    <h1 style="margin-top: 30px;">Portal paranormal</h1>
+    <p>
+        <a href="https://twitter.com/saaclevi" target="_blank" rel="noopener noreferrer" class="hoverarroba">
+            by @saaclevi
+        </a>
+    </p>
         <div class="link-container">
-            <a href="sites-ordem/grimorio.html" class="link-button">grimorio.html</a>
-            <a href="sites-ordem/portal.html" class="link-button">portal.html</a>
+            <a href="coloradoras/sanguificadora.html" class="link-button sanguificadora">Sanguificadora</a>
+            <a href="coloradoras/conhecedora.html" class="link-button conhecedora">Conhecedora</a>
+            <a href="coloradoras/energizadora.html" class="link-button energizadora">Energizadora</a>
+            <a href="coloradoras/mortificadora.html" class="link-button mortificadora">Mortificadora</a>
+            <a href="coloradoras/amedrontadora.html" class="link-button amedrontadora">Amedrontadora</a>
+            <p>⦿</p>
+            <a style="margin-bottom: 30px;" href="grimorio.html" class="link-button grimorio">Grimorium Macabre <br> <i style="font-size: 12px; font-weight: normal;">{Compêndio de Rituais Paranormais}</i></a>
+
         </div>
     </div>
 
