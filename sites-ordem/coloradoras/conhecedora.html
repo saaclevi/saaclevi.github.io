@@ -252,26 +252,37 @@
             currentImage.src = dataUrl;
         }
 
-        // Função para aplicar o filtro de conhecimento (gradiente azul)
         function applyFilter() {
-            if (!currentImage) return;
+    if (!currentImage) return;
 
-            // Desenha a imagem atual no canvas para pegar os dados de pixel
-            ctx.drawImage(currentImage, 0, 0);
+    // Desenha a imagem atual no canvas para pegar os dados de pixel
+    ctx.drawImage(currentImage, 0, 0);
 
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imageData.data; // Array de pixels [R, G, B, A, R, G, B, A, ...]
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data; // Array de pixels [R, G, B, A, R, G, B, A, ...]
 
-            for (let i = 0; i < data.length; i += 4) {
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
 
-                data[i] = 255;     // Canal vermelho
-                data[i + 1] = 255; // Canal verde
-                data[i + 2] = 0;   // Canal azul
-            }
+        // 1. Calcule a Luminosidade (uma média ponderada para preservar os detalhes de luz/sombra)
+        // Isso é o que a maioria dos filtros "tonais" faz para obter a variação de brilho.
+        // O valor 0.2126R + 0.7152G + 0.0722B é uma fórmula comum de luminância.
+        // ... dentro do loop
+        const avg = 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
-            ctx.putImageData(imageData, 0, 0);
-            updateCurrentImageFromCanvas();
-        }
+        data[i] = Math.min(255, avg * 1.3);   // Aumenta o Vermelho para um tom mais quente
+        data[i + 1] = avg;                    // Mantém o Verde
+        data[i + 2] = 0;                      // Zero Azul
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    updateCurrentImageFromCanvas();
+}
+
+
+
         
         // Função para adicionar a imagem de sangue como sobreposição
         function addOverlay(compositeType) {
